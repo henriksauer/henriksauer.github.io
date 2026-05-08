@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henrik Sauer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Georgia", serif; font-size: 16px; line-height: 1.65; color: #1a1a1a; background: #fff; }
+    a { color: #1a4a7a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { border-bottom: 1px solid #d8d8d8; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; background: #fff; z-index: 100; }
+    nav .site-name { font-size: 1.05rem; font-weight: normal; letter-spacing: 0.01em; color: #1a1a1a; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a { font-size: 0.92rem; color: #444; text-transform: uppercase; letter-spacing: 0.06em; }
+    nav ul a:hover { color: #1a4a7a; text-decoration: none; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+    #home { padding: 4rem 0 3rem; }
+    .profile { display: flex; gap: 3rem; align-items: flex-start; }
+    .profile-photo { flex-shrink: 0; width: 190px; }
+    .profile-photo img { width: 100%; border-radius: 4px; display: block; }
+    .profile-photo .photo-placeholder { width: 190px; height: 240px; background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.8rem; font-family: sans-serif; }
+    .profile-info h1 { font-size: 1.9rem; font-weight: normal; margin-bottom: 0.25rem; }
+    .profile-info .position { font-size: 1rem; color: #555; margin-bottom: 0.15rem; }
+    .profile-info .fields { font-size: 0.92rem; color: #777; font-style: italic; margin-bottom: 1.25rem; }
+    .bio { font-size: 0.97rem; color: #333; margin-bottom: 1.5rem; }
+    .contact-grid { font-size: 0.88rem; color: #444; display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin-bottom: 1.5rem; }
+    .contact-grid .label { color: #888; }
+    .advisors { font-size: 0.88rem; margin-bottom: 1.25rem; }
+    .advisors .label { color: #888; display: block; margin-bottom: 0.25rem; }
+    .advisors ul { list-style: none; padding-left: 0.5rem; }
+    .advisors ul li { margin-bottom: 0.1rem; }
+    .badge { display: inline-block; background: #eef3f9; color: #1a4a7a; font-size: 0.78rem; border: 1px solid #c4d5e9; border-radius: 3px; padding: 0.15rem 0.55rem; margin-top: 0.5rem; }
+    .divider { border: none; border-top: 1px solid #e4e4e4; margin: 2.5rem 0; }
+    section { padding: 2.5rem 0; }
+    section:first-of-type { padding-top: 0; }
+    h2.section-title { font-size: 1.15rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 2rem; border-bottom: 1px solid #e4e4e4; padding-bottom: 0.5rem; }
+    .paper { margin-bottom: 2rem; }
+    .paper-title { font-size: 1rem; font-weight: bold; color: #1a1a1a; margin-bottom: 0.2rem; }
+    .paper-coauthors { font-size: 0.9rem; color: #555; font-style: italic; margin-bottom: 0.5rem; }
+    .paper-abstract { font-size: 0.9rem; color: #444; border-left: 2px solid #d8d8d8; padding-left: 1rem; margin-top: 0.75rem; }
+    details > summary { font-size: 0.82rem; color: #1a4a7a; cursor: pointer; user-select: none; list-style: none; margin-top: 0.4rem; }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::before { content: "+ Abstract"; }
+    details[open] > summary::before { content: "\2212 Abstract"; }
+    .wip-item { margin-bottom: 1.25rem; }
+    .wip-title { font-size: 1rem; font-style: italic; color: #1a1a1a; }
+    .wip-desc { font-size: 0.9rem; color: #555; margin-top: 0.75rem; border-left: 2px solid #d8d8d8; padding-left: 1rem; }
+    details.wip > summary { font-size: 0.82rem; color: #1a4a7a; cursor: pointer; user-select: none; list-style: none; margin-top: 0.4rem; }
+    details.wip > summary::-webkit-details-marker { display: none; }
+    details.wip > summary::before { content: "+ Description"; }
+    details.wip[open] > summary::before { content: "\2212 Description"; }
+    footer { border-top: 1px solid #e4e4e4; padding: 2rem; text-align: center; font-size: 0.8rem; color: #aaa; }
+    @media (max-width: 680px) {
+      .profile { flex-direction: column; gap: 1.5rem; }
+      .profile-photo { width: 140px; }
+      .profile-photo .photo-placeholder { width: 140px; height: 175px; }
+      nav ul { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="site-name">Henrik Sauer</span>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <section id="home">
+      <div class="profile">
+        <div class="profile-photo">
+          <img src="images/profile.jpg" alt="Henrik Sauer"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="photo-placeholder" style="display:none;">Photo</div>
+        </div>
+        <div class="profile-info">
+          <h1>Henrik Sauer</h1>
+          <p class="position">5th Year PhD Student &mdash; University of Mannheim, Department of Economics</p>
+          <p class="fields">Financial Economics &middot; Corporate Finance &middot; Industrial Organization</p>
+          <p class="bio">I am a fifth-year PhD student in Economics at the University of Mannheim. My research focuses on the intersection of financial markets, corporate finance, and industrial organization. I will be on the job market in 2026&ndash;27.</p>
+          <span class="badge">Job Market 2026&ndash;27</span>
+          <hr class="divider" style="margin: 1.25rem 0;">
+          <div class="contact-grid">
+            <span class="label">Email</span>
+            <span><a href="mailto:henrik.sauer@uni-mannheim.de">henrik.sauer@uni-mannheim.de</a></span>
+            <span class="label">Office</span>
+            <span>L7, 3-5, Room 203 &mdash; 68161 Mannheim, Germany</span>
+            <span class="label">LinkedIn</span>
+            <span><a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">henrik-sauer</a></span>
+          </div>
+          <div class="advisors">
+            <span class="label">Advisors</span>
+            <ul>
+              <li>Volker Nocke &mdash; Department of Economics</li>
+              <li>Ernst Maug &mdash; Department of Finance</li>
+              <li>Ernst-Ludwig von Thadden &mdash; Department of Economics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section id="research">
+      <h2 class="section-title">Working Papers</h2>
+      <div class="paper">
+        <div class="paper-title">Public Markets for Claims in Litigation</div>
+        <div class="paper-coauthors">with Julian Klix and Paul Wegner</div>
+        <details>
+          <summary></summary>
+          <p class="paper-abstract">We study how public pricing in litigation finance markets affects plaintiffs&#39; financing decisions and settlement bargaining. A plaintiff sells shares of case proceeds via a market maker whose price reveals case quality. Settlement is modeled as a one-sided private information game where the defendant makes offers. We show that plaintiffs optimally oversell their claims relative to efficient risk sharing: reduced risk exposure enables credible commitment to tougher settlement demands, and bargaining gains exceed the per-share price discount. More informative prices amplify this overselling, as better signals disproportionately benefit investors. The welfare implications of public prices are therefore ambiguous&mdash;better information fosters agreement but strengthens commitment motives. Endogenous investor mass further reinforces overselling by spreading exposure across multiple investors.</p>
+        </details>
+      </div>
+      <hr class="divider">
+      <h2 class="section-title">Work in Progress</h2>
+      <div class="wip-item">
+        <div class="wip-title">Hedge Fund Trading around Shareholder Votes on Mergers: A Common Ownership Perspective</div>
+        <details class="wip">
+          <summary></summary>
+          <p class="wip-desc">Recent theories on shareholder democracy predict that shareholders reallocate based on their preferences for the expected outcome of the vote. I extend these theories by incorporating common ownership. I predict that when shareholders benefit from a merger through their positions in industry competitors, they increase their ownership of the acquirer, and vice versa. To test my predictions, I study hedge fund trading in acquirers for mergers requiring shareholder approval. Hedge funds indeed increase their acquirer ownership by 0.6 pp per $100M in combined abnormal returns to horizontal competitors. With shareholder reallocation driven by cross-holdings, shareholder approval becomes disconnected from the acquirer&#39;s gains from the merger. Moreover, approval voting and announcement returns become systematically less informative to competition authorities.</p>
+        </details>
+      </div>
+      <div class="wip-item">
+        <div class="wip-title">Deal-Contingent Options</div>
+      </div>
+    </section>
+    <hr class="divider">
+    <section id="contact" style="padding-bottom: 3rem;">
+      <h2 class="section-title">Contact</h2>
+      <p style="font-size:0.95rem; color:#444; margin-bottom:0.5rem;"><a href="mailto:henrik.sauer@uni-mannheim.de">henrik.sauer@uni-mannheim.de</a></p>
+      <p style="font-size:0.95rem; color:#666;">Department of Economics<br>University of Mannheim<br>L7, 3-5, Room 203<br>68161 Mannheim, Germany</p>
+    </section>
+  </div>
+  <footer>&copy; 2026 Henrik Sauer</footer>
+</body>
+</html>
