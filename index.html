@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Henrik Sauer</title>
+  <title>Henrik Sauer – PhD Candidate in Economics, University of Mannheim</title>
+  <meta name="description" content="Henrik Sauer is a PhD candidate in Economics at the University of Mannheim working on financial economics, corporate finance, and industrial organization. Job market 2026–27.">
+  <meta name="keywords" content="Henrik Sauer, economics, PhD, University of Mannheim, financial economics, corporate finance, industrial organization, job market, litigation finance, common ownership">
+  <meta name="author" content="Henrik Sauer">
+  <meta property="og:title" content="Henrik Sauer – PhD Candidate in Economics">
+  <meta property="og:description" content="PhD candidate at the University of Mannheim working on financial economics, corporate finance, and industrial organization. Job market 2026–27.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://henriksauer.github.io/">
+  <link rel="canonical" href="https://henriksauer.github.io/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -45,10 +53,7 @@
       width: 100%;
       margin-bottom: 1.5rem;
     }
-    .sidebar .photo img {
-      width: 100%;
-      display: block;
-    }
+    .sidebar .photo img { width: 100%; display: block; }
     .sidebar .photo .placeholder {
       width: 100%; height: 210px;
       background: #2a2a2a;
@@ -64,16 +69,22 @@
       font-size: 0.92rem;
       line-height: 1.55;
     }
-    .info-label {
-      font-weight: bold;
-      color: #e8e8e8;
+    .info-label { font-weight: bold; color: #e8e8e8; }
+
+    /* ── CENTERED RIGHT CONTENT ── */
+    .content-area {
+      margin-left: 265px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+      min-height: 100vh;
     }
 
-    /* ── SCROLLABLE RIGHT MAIN ── */
     .main {
-      margin-left: 265px;
-      padding: 2rem 2.5rem 3rem 2.5rem;
-      max-width: 700px;
+      padding: 2rem 0 3rem;
+      max-width: 660px;
+      width: 100%;
     }
 
     .main p { margin-bottom: 0.65rem; }
@@ -82,6 +93,26 @@
       font-weight: bold;
       color: #ffffff;
       margin-bottom: 0.5rem;
+    }
+
+    /* Research fields */
+    .fields {
+      font-size: 0.92rem;
+      color: #b0b0b0;
+      margin-bottom: 0.6rem;
+    }
+    .fields .sep { color: #5bc8f5; padding: 0 0.3rem; }
+
+    /* Job market badge */
+    .jm-badge {
+      display: inline-block;
+      border: 1px solid #5bc8f5;
+      color: #5bc8f5;
+      font-size: 0.8rem;
+      padding: 0.18rem 0.6rem;
+      margin: 0.3rem 0 0.9rem;
+      border-radius: 2px;
+      letter-spacing: 0.02em;
     }
 
     hr {
@@ -101,7 +132,6 @@
     .paper { margin-bottom: 1.25rem; }
     .paper p { margin-bottom: 0.15rem; }
 
-    /* abstract toggle */
     details > summary {
       color: #5bc8f5;
       cursor: pointer;
@@ -123,10 +153,10 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
+    @media (max-width: 700px) {
       body { flex-direction: column; }
       .sidebar { position: relative; width: 100%; height: auto; }
-      .main { margin-left: 0; padding: 1.5rem; }
+      .content-area { margin-left: 0; padding: 0 1rem; }
     }
   </style>
 </head>
@@ -161,84 +191,97 @@
 
     <div class="info-block">
       <span class="info-label">Links:</span><br>
+      <a href="files/cv.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
       <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 
-  <div class="main">
+  <div class="content-area">
+    <div class="main">
 
-    <p class="welcome">Welcome!</p>
-    <p>
-      I am a fifth-year PhD student in Economics at the
-      University of Mannheim, Department of Economics.
-      My research focuses on financial economics, corporate finance,
-      and industrial organization.
-      I will be on the job market in 2026&ndash;27.
-    </p>
-    <p>
-      My advisors are Volker Nocke (Department of Economics),
-      Ernst Maug (Department of Finance), and
-      Ernst-Ludwig von Thadden (Department of Economics).
-    </p>
+      <p class="welcome">Welcome!</p>
 
-    <hr>
-
-    <h2>Working Papers:</h2>
-
-    <div class="paper">
-      <p>
-        &#9658;&nbsp;<a href="#">Public Markets for Claims in Litigation</a>
-        (with Julian Klix and Paul Wegner)
+      <p class="fields">
+        Financial Economics
+        <span class="sep">&middot;</span>
+        Corporate Finance
+        <span class="sep">&middot;</span>
+        Industrial Organization
       </p>
-      <details>
-        <summary></summary>
-        <p class="abstract-text">
-          We study how public pricing in litigation finance markets affects plaintiffs&apos;
-          financing decisions and settlement bargaining. A plaintiff sells shares of case proceeds
-          via a market maker whose price reveals case quality. Settlement is modeled as a
-          one-sided private information game where the defendant makes offers. We show that
-          plaintiffs optimally oversell their claims relative to efficient risk sharing: reduced
-          risk exposure enables credible commitment to tougher settlement demands, and bargaining
-          gains exceed the per-share price discount. More informative prices amplify this
-          overselling, as better signals disproportionately benefit investors. The welfare
-          implications of public prices are therefore ambiguous&mdash;better information fosters
-          agreement but strengthens commitment motives. Endogenous investor mass further
-          reinforces overselling by spreading exposure across multiple investors.
-        </p>
-      </details>
-    </div>
 
-    <hr>
+      <div class="jm-badge">On the Job Market 2026&ndash;27</div>
 
-    <h2>Work in Progress:</h2>
-
-    <div class="paper">
       <p>
-        &#9658;&nbsp;<a href="#">Hedge Fund Trading around Shareholder Votes on Mergers:
-        A Common Ownership Perspective</a>
+        I am a fifth-year PhD student in Economics at the
+        University of Mannheim, Department of Economics.
+        My research focuses on financial economics, corporate finance,
+        and industrial organization.
       </p>
-      <details>
-        <summary></summary>
-        <p class="abstract-text">
-          Recent theories on shareholder democracy predict that shareholders reallocate based on
-          their preferences for the expected outcome of the vote. I extend these theories by
-          incorporating common ownership. I predict that when shareholders benefit from a merger
-          through their positions in industry competitors, they increase their ownership of the
-          acquirer, and vice versa. To test my predictions, I study hedge fund trading in
-          acquirers for mergers requiring shareholder approval. Hedge funds indeed increase their
-          acquirer ownership by 0.6 pp per $100M in combined abnormal returns to horizontal
-          competitors. With shareholder reallocation driven by cross-holdings, shareholder
-          approval becomes disconnected from the acquirer&apos;s gains from the merger. Moreover,
-          approval voting and announcement returns become systematically less informative to
-          competition authorities.
+      <p>
+        My advisors are Volker Nocke (Department of Economics),
+        Ernst Maug (Department of Finance), and
+        Ernst-Ludwig von Thadden (Department of Economics).
+      </p>
+
+      <hr>
+
+      <h2>Working Papers:</h2>
+
+      <div class="paper">
+        <p>
+          &#9658;&nbsp;<a href="#">Public Markets for Claims in Litigation</a>
+          (with Julian Klix and Paul Wegner)
         </p>
-      </details>
-    </div>
+        <details>
+          <summary></summary>
+          <p class="abstract-text">
+            We study how public pricing in litigation finance markets affects plaintiffs&apos;
+            financing decisions and settlement bargaining. A plaintiff sells shares of case proceeds
+            via a market maker whose price reveals case quality. Settlement is modeled as a
+            one-sided private information game where the defendant makes offers. We show that
+            plaintiffs optimally oversell their claims relative to efficient risk sharing: reduced
+            risk exposure enables credible commitment to tougher settlement demands, and bargaining
+            gains exceed the per-share price discount. More informative prices amplify this
+            overselling, as better signals disproportionately benefit investors. The welfare
+            implications of public prices are therefore ambiguous&mdash;better information fosters
+            agreement but strengthens commitment motives. Endogenous investor mass further
+            reinforces overselling by spreading exposure across multiple investors.
+          </p>
+        </details>
+      </div>
 
-    <div class="paper">
-      <p>&#9658;&nbsp;Deal-Contingent Options</p>
-    </div>
+      <hr>
 
+      <h2>Work in Progress:</h2>
+
+      <div class="paper">
+        <p>
+          &#9658;&nbsp;<a href="#">Hedge Fund Trading around Shareholder Votes on Mergers:
+          A Common Ownership Perspective</a>
+        </p>
+        <details>
+          <summary></summary>
+          <p class="abstract-text">
+            Recent theories on shareholder democracy predict that shareholders reallocate based on
+            their preferences for the expected outcome of the vote. I extend these theories by
+            incorporating common ownership. I predict that when shareholders benefit from a merger
+            through their positions in industry competitors, they increase their ownership of the
+            acquirer, and vice versa. To test my predictions, I study hedge fund trading in
+            acquirers for mergers requiring shareholder approval. Hedge funds indeed increase their
+            acquirer ownership by 0.6 pp per $100M in combined abnormal returns to horizontal
+            competitors. With shareholder reallocation driven by cross-holdings, shareholder
+            approval becomes disconnected from the acquirer&apos;s gains from the merger. Moreover,
+            approval voting and announcement returns become systematically less informative to
+            competition authorities.
+          </p>
+        </details>
+      </div>
+
+      <div class="paper">
+        <p>&#9658;&nbsp;Deal-Contingent Options</p>
+      </div>
+
+    </div>
   </div>
 
 </body>
