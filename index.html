@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,20 +14,67 @@
   <link rel="canonical" href="https://henriksauer.github.io/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body { height: 100%; }
+
+    /* ── THEME TOKENS ── */
+    :root[data-theme="dark"] {
+      --bg:             #1a1a1a;
+      --text:           #c8c8c8;
+      --link:           #5bc8f5;
+      --label:          #e8e8e8;
+      --heading:        #ffffff;
+      --fields:         #b0b0b0;
+      --hr:             #333333;
+      --abstract:       #aaaaaa;
+      --abstract-bdr:   #333333;
+      --placeholder-bg: #2a2a2a;
+      --placeholder-fg: #555555;
+      --toggle-label:   "☀ Light";
+    }
+    :root[data-theme="light"] {
+      --bg:             #ffffff;
+      --text:           #333333;
+      --link:           #1a5fa8;
+      --label:          #111111;
+      --heading:        #111111;
+      --fields:         #666666;
+      --hr:             #dddddd;
+      --abstract:       #555555;
+      --abstract-bdr:   #cccccc;
+      --placeholder-bg: #eeeeee;
+      --placeholder-fg: #999999;
+    }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14.5px;
       line-height: 1.65;
-      background: #1a1a1a;
-      color: #c8c8c8;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
+      transition: background 0.2s, color 0.2s;
     }
 
-    a { color: #5bc8f5; text-decoration: none; }
+    a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 200;
+      background: transparent;
+      border: 1px solid var(--link);
+      color: var(--link);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.15s;
+    }
+    .theme-btn:hover { background: rgba(91,200,245,0.1); }
 
     /* ── FIXED LEFT SIDEBAR ── */
     .sidebar {
@@ -37,39 +84,45 @@
       top: 0; left: 0;
       height: 100vh;
       overflow-y: auto;
-      padding: 2rem 1.75rem;
-      background: #1a1a1a;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      text-align: center;
     }
 
     .sidebar h1 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: bold;
-      color: #5bc8f5;
+      color: var(--link);
       margin-bottom: 1rem;
       line-height: 1.2;
     }
 
     .sidebar .photo {
-      width: 100%;
-      margin-bottom: 1.5rem;
+      width: 85%;
+      margin: 0 auto 1.5rem;
     }
     .sidebar .photo img { width: 100%; display: block; }
     .sidebar .photo .placeholder {
-      width: 100%; height: 210px;
-      background: #2a2a2a;
+      width: 100%; height: 200px;
+      background: var(--placeholder-bg);
       display: none;
       align-items: center;
       justify-content: center;
-      color: #555;
+      color: var(--placeholder-fg);
       font-size: 0.8rem;
     }
 
     .info-block {
-      margin-bottom: 1.1rem;
-      font-size: 0.92rem;
-      line-height: 1.55;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
-    .info-label { font-weight: bold; color: #e8e8e8; }
+    .info-label {
+      font-weight: bold;
+      color: var(--label);
+      display: block;
+      margin-bottom: 0.1rem;
+    }
 
     /* ── CENTERED RIGHT CONTENT ── */
     .content-area {
@@ -87,27 +140,25 @@
       width: 100%;
     }
 
-    .main p { margin-bottom: 0.65rem; }
+    .main > p { margin-bottom: 0.65rem; }
 
     .welcome {
       font-weight: bold;
-      color: #ffffff;
+      color: var(--heading);
       margin-bottom: 0.5rem;
     }
 
-    /* Research fields */
     .fields {
       font-size: 0.92rem;
-      color: #b0b0b0;
+      color: var(--fields);
       margin-bottom: 0.6rem;
     }
-    .fields .sep { color: #5bc8f5; padding: 0 0.3rem; }
+    .fields .sep { color: var(--link); padding: 0 0.3rem; }
 
-    /* Job market badge */
     .jm-badge {
       display: inline-block;
-      border: 1px solid #5bc8f5;
-      color: #5bc8f5;
+      border: 1px solid var(--link);
+      color: var(--link);
       font-size: 0.8rem;
       padding: 0.18rem 0.6rem;
       margin: 0.3rem 0 0.9rem;
@@ -117,39 +168,34 @@
 
     hr {
       border: none;
-      border-top: 1px solid #333;
+      border-top: 1px solid var(--hr);
       margin: 1.25rem 0;
     }
 
     h2 {
       font-size: 1rem;
       font-weight: bold;
-      color: #ffffff;
+      color: var(--heading);
       margin-bottom: 0.75rem;
     }
 
     /* ── PAPERS ── */
-    .paper { margin-bottom: 1.25rem; }
-    .paper p { margin-bottom: 0.15rem; }
-
-    details > summary {
-      color: #5bc8f5;
-      cursor: pointer;
-      list-style: none;
-      font-size: 0.88rem;
-      margin-top: 0.25rem;
-      display: inline-block;
-    }
-    details > summary::-webkit-details-marker { display: none; }
-    details > summary::before { content: "[+] Abstract"; }
-    details[open] > summary::before { content: "[\2212] Abstract"; }
+    .paper { margin-bottom: 1.5rem; }
+    .paper > p { margin-bottom: 0.2rem; }
 
     .abstract-text {
       margin-top: 0.5rem;
       font-size: 0.9rem;
-      color: #aaa;
+      color: var(--abstract);
       padding-left: 1rem;
-      border-left: 2px solid #333;
+      border-left: 2px solid var(--abstract-bdr);
+    }
+
+    .presented {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--link);
+      margin-top: 0.2rem;
     }
 
     /* ── RESPONSIVE ── */
@@ -157,45 +203,51 @@
       body { flex-direction: column; }
       .sidebar { position: relative; width: 100%; height: auto; }
       .content-area { margin-left: 0; padding: 0 1rem; }
+      .theme-btn { top: 0.5rem; right: 0.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9788; Light</button>
+
+  <!-- FIXED SIDEBAR -->
   <div class="sidebar">
     <h1>Henrik Sauer</h1>
 
     <div class="photo">
-      <img src="images/profile.jpg" alt="Henrik Sauer"
+      <img src="IMG_0349.jpeg" alt="Henrik Sauer"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="placeholder">Photo</div>
     </div>
 
     <div class="info-block">
-      <span class="info-label">Affiliation:</span><br>
+      <span class="info-label">Affiliation</span>
       University of Mannheim<br>
       Department of Economics<br>
       5th Year PhD Student
     </div>
 
     <div class="info-block">
-      <span class="info-label">Office:</span><br>
+      <span class="info-label">Office</span>
       L7, 3-5, Room 203<br>
       68161 Mannheim, Germany
     </div>
 
     <div class="info-block">
-      <span class="info-label">E-mail:</span><br>
+      <span class="info-label">E-mail</span>
       henrik.sauer "at" uni-mannheim.de
     </div>
 
     <div class="info-block">
-      <span class="info-label">Links:</span><br>
-      <a href="files/cv.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
+      <span class="info-label">Links</span>
+      <a href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
+      <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
       <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 
+  <!-- SCROLLABLE MAIN -->
   <div class="content-area">
     <div class="main">
 
@@ -229,25 +281,23 @@
 
       <div class="paper">
         <p>
-          &#9658;&nbsp;<a href="#">Public Markets for Claims in Litigation</a>
+          &#9658;&nbsp;<a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">Public Markets for Claims in Litigation</a>
           (with Julian Klix and Paul Wegner)
         </p>
-        <details>
-          <summary></summary>
-          <p class="abstract-text">
-            We study how public pricing in litigation finance markets affects plaintiffs&apos;
-            financing decisions and settlement bargaining. A plaintiff sells shares of case proceeds
-            via a market maker whose price reveals case quality. Settlement is modeled as a
-            one-sided private information game where the defendant makes offers. We show that
-            plaintiffs optimally oversell their claims relative to efficient risk sharing: reduced
-            risk exposure enables credible commitment to tougher settlement demands, and bargaining
-            gains exceed the per-share price discount. More informative prices amplify this
-            overselling, as better signals disproportionately benefit investors. The welfare
-            implications of public prices are therefore ambiguous&mdash;better information fosters
-            agreement but strengthens commitment motives. Endogenous investor mass further
-            reinforces overselling by spreading exposure across multiple investors.
-          </p>
-        </details>
+        <p class="presented">Presenting at EEA Annual Congress 2026</p>
+        <p class="abstract-text">
+          We study how public pricing in litigation finance markets affects plaintiffs&apos;
+          financing decisions and settlement bargaining. A plaintiff sells shares of case proceeds
+          via a market maker whose price reveals case quality. Settlement is modeled as a
+          one-sided private information game where the defendant makes offers. We show that
+          plaintiffs optimally oversell their claims relative to efficient risk sharing: reduced
+          risk exposure enables credible commitment to tougher settlement demands, and bargaining
+          gains exceed the per-share price discount. More informative prices amplify this
+          overselling, as better signals disproportionately benefit investors. The welfare
+          implications of public prices are therefore ambiguous&mdash;better information fosters
+          agreement but strengthens commitment motives. Endogenous investor mass further
+          reinforces overselling by spreading exposure across multiple investors.
+        </p>
       </div>
 
       <hr>
@@ -256,25 +306,22 @@
 
       <div class="paper">
         <p>
-          &#9658;&nbsp;<a href="#">Hedge Fund Trading around Shareholder Votes on Mergers:
-          A Common Ownership Perspective</a>
+          &#9658;&nbsp;Hedge Fund Trading around Shareholder Votes on Mergers:
+          A Common Ownership Perspective
         </p>
-        <details>
-          <summary></summary>
-          <p class="abstract-text">
-            Recent theories on shareholder democracy predict that shareholders reallocate based on
-            their preferences for the expected outcome of the vote. I extend these theories by
-            incorporating common ownership. I predict that when shareholders benefit from a merger
-            through their positions in industry competitors, they increase their ownership of the
-            acquirer, and vice versa. To test my predictions, I study hedge fund trading in
-            acquirers for mergers requiring shareholder approval. Hedge funds indeed increase their
-            acquirer ownership by 0.6 pp per $100M in combined abnormal returns to horizontal
-            competitors. With shareholder reallocation driven by cross-holdings, shareholder
-            approval becomes disconnected from the acquirer&apos;s gains from the merger. Moreover,
-            approval voting and announcement returns become systematically less informative to
-            competition authorities.
-          </p>
-        </details>
+        <p class="abstract-text">
+          Recent theories on shareholder democracy predict that shareholders reallocate based on
+          their preferences for the expected outcome of the vote. I extend these theories by
+          incorporating common ownership. I predict that when shareholders benefit from a merger
+          through their positions in industry competitors, they increase their ownership of the
+          acquirer, and vice versa. To test my predictions, I study hedge fund trading in
+          acquirers for mergers requiring shareholder approval. Hedge funds indeed increase their
+          acquirer ownership by 0.6 pp per $100M in combined abnormal returns to horizontal
+          competitors. With shareholder reallocation driven by cross-holdings, shareholder
+          approval becomes disconnected from the acquirer&apos;s gains from the merger. Moreover,
+          approval voting and announcement returns become systematically less informative to
+          competition authorities.
+        </p>
       </div>
 
       <div class="paper">
@@ -283,6 +330,24 @@
 
     </div>
   </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      const isDark = html.dataset.theme === 'dark';
+      html.dataset.theme = isDark ? 'light' : 'dark';
+      btn.innerHTML = isDark ? '&#9790; Dark' : '&#9788; Light';
+      localStorage.setItem('theme', html.dataset.theme);
+    }
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved && saved !== 'dark') {
+        document.documentElement.dataset.theme = saved;
+        document.getElementById('themeBtn').innerHTML = '&#9790; Dark';
+      }
+    })();
+  </script>
 
 </body>
 </html>
