@@ -14,6 +14,7 @@
   <link rel="canonical" href="https://henriksauer.github.io/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
 
     /* ── THEME TOKENS ── */
     :root[data-theme="dark"] {
@@ -28,6 +29,7 @@
       --abstract-bdr:   #333333;
       --placeholder-bg: #2a2a2a;
       --placeholder-fg: #555555;
+      --toggle-label:   "☀ Light";
     }
     :root[data-theme="light"] {
       --bg:             #ffffff;
@@ -43,24 +45,20 @@
       --placeholder-fg: #999999;
     }
 
-    html {
-      background: var(--bg);
-    }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14.5px;
       line-height: 1.65;
       background: var(--bg);
       color: var(--text);
+      display: flex;
       transition: background 0.2s, color 0.2s;
-      min-height: 100vh;
     }
 
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── THEME TOGGLE ── */
+    /* ── THEME TOGGLE BUTTON ── */
     .theme-btn {
       position: fixed;
       top: 1rem;
@@ -76,27 +74,19 @@
       letter-spacing: 0.03em;
       transition: background 0.15s;
     }
-    .theme-btn:hover { background: rgba(91,200,245,0.12); }
+    .theme-btn:hover { background: rgba(91,200,245,0.1); }
 
-    /* ── CENTERED PAGE WRAPPER ── */
-    .page-wrapper {
-      display: flex;
-      max-width: 960px;
-      margin: 0 auto;
-      min-height: 100vh;
-    }
-
-    /* ── STICKY SIDEBAR ── */
+    /* ── FIXED LEFT SIDEBAR ── */
     .sidebar {
-      width: 270px;
+      width: 265px;
       flex-shrink: 0;
-      position: sticky;
-      top: 0;
-      max-height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
       overflow-y: auto;
-      align-self: flex-start;
-      padding: 2rem 1.75rem;
-      text-align: left;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      text-align: center;
     }
 
     .sidebar h1 {
@@ -108,8 +98,8 @@
     }
 
     .sidebar .photo {
-      width: 100%;
-      margin-bottom: 1.5rem;
+      width: 85%;
+      margin: 0 auto 1.5rem;
     }
     .sidebar .photo img { width: 100%; display: block; }
     .sidebar .photo .placeholder {
@@ -134,11 +124,20 @@
       margin-bottom: 0.1rem;
     }
 
-    /* ── MAIN CONTENT ── */
-    .main {
+    /* ── CENTERED RIGHT CONTENT ── */
+    .content-area {
+      margin-left: 265px;
       flex: 1;
-      padding: 2rem 2.5rem 3rem;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem;
+      min-height: 100vh;
+    }
+
+    .main {
+      padding: 2rem 0 3rem;
       max-width: 660px;
+      width: 100%;
     }
 
     .main > p { margin-bottom: 0.65rem; }
@@ -201,9 +200,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      .page-wrapper { flex-direction: column; }
-      .sidebar { position: relative; width: 100%; max-height: none; }
-      .main { padding: 1.5rem; }
+      body { flex-direction: column; }
+      .sidebar { position: relative; width: 100%; height: auto; }
+      .content-area { margin-left: 0; padding: 0 1rem; }
       .theme-btn { top: 0.5rem; right: 0.5rem; }
     }
   </style>
@@ -212,45 +211,44 @@
 
   <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9788; Light</button>
 
-  <div class="page-wrapper">
+  <!-- FIXED SIDEBAR -->
+  <div class="sidebar">
+    <h1>Henrik Sauer</h1>
 
-    <!-- STICKY SIDEBAR -->
-    <div class="sidebar">
-      <h1>Henrik Sauer</h1>
-
-      <div class="photo">
-        <img src="IMG_0349.jpeg" alt="Henrik Sauer"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="placeholder">Photo</div>
-      </div>
-
-      <div class="info-block">
-        <span class="info-label">Affiliation</span>
-        University of Mannheim<br>
-        Department of Economics<br>
-        5th Year PhD Student
-      </div>
-
-      <div class="info-block">
-        <span class="info-label">Office</span>
-        L7, 3-5, Room 203<br>
-        68161 Mannheim, Germany
-      </div>
-
-      <div class="info-block">
-        <span class="info-label">E-mail</span>
-        henrik.sauer "at" uni-mannheim.de
-      </div>
-
-      <div class="info-block">
-        <span class="info-label">Links</span>
-        <a href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
-        <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
-        <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+    <div class="photo">
+      <img src="IMG_0349.jpeg" alt="Henrik Sauer"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="placeholder">Photo</div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <div class="info-block">
+      <span class="info-label">Affiliation</span>
+      University of Mannheim<br>
+      Department of Economics<br>
+      PhD Candidate
+    </div>
+
+    <div class="info-block">
+      <span class="info-label">Office</span>
+      L7, 3-5, Room 203<br>
+      68161 Mannheim, Germany
+    </div>
+
+    <div class="info-block">
+      <span class="info-label">E-mail</span>
+      henrik.sauer "at" uni-mannheim.de
+    </div>
+
+    <div class="info-block">
+      <span class="info-label">Links</span>
+      <a href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
+      <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
+      <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- SCROLLABLE MAIN -->
+  <div class="content-area">
     <div class="main">
 
       <p class="welcome">Welcome!</p>
@@ -263,18 +261,17 @@
         Industrial Organization
       </p>
 
-      <div class="jm-badge">On the Job Market 2026&ndash;27</div>
+      <div class="jm-badge">On the Job Market 2026/27</div>
 
       <p>
-        I am a fifth-year PhD student in Economics at the
+        I am a PhD candidate in Economics at the
         University of Mannheim, Department of Economics.
-        My research focuses on financial economics, corporate finance,
-        and industrial organization.
+        I am interested in how ownership and financial markets affect
+        real world outcomes in insurance and competitive markets.
       </p>
       <p>
-        My advisors are Volker Nocke (Department of Economics),
-        Ernst Maug (Department of Finance), and
-        Ernst-Ludwig von Thadden (Department of Economics).
+        My advisors are Volker Nocke (Department of Economics) and
+        Ernst Maug (Department of Finance).
       </p>
 
       <hr>
@@ -330,8 +327,8 @@
         <p>&#9658;&nbsp;Deal-Contingent Options</p>
       </div>
 
-    </div><!-- /.main -->
-  </div><!-- /.page-wrapper -->
+    </div>
+  </div>
 
   <script>
     function toggleTheme() {
