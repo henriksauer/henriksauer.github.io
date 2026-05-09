@@ -51,8 +51,14 @@
       line-height: 1.65;
       background: var(--bg);
       color: var(--text);
-      display: flex;
       transition: background 0.2s, color 0.2s;
+    }
+
+    .page-wrapper {
+      display: flex;
+      max-width: 960px;
+      margin: 0 auto;
+      min-height: 100vh;
     }
 
     a { color: var(--link); text-decoration: none; }
@@ -76,17 +82,18 @@
     }
     .theme-btn:hover { background: rgba(91,200,245,0.1); }
 
-    /* ── FIXED LEFT SIDEBAR ── */
+    /* ── STICKY LEFT SIDEBAR ── */
     .sidebar {
       width: 265px;
       flex-shrink: 0;
-      position: fixed;
-      top: 0; left: 0;
-      height: 100vh;
+      position: sticky;
+      top: 0;
+      max-height: 100vh;
       overflow-y: auto;
+      align-self: flex-start;
       padding: 2rem 1.5rem;
       background: var(--bg);
-      text-align: center;
+      text-align: left;
     }
 
     .sidebar h1 {
@@ -124,14 +131,10 @@
       margin-bottom: 0.1rem;
     }
 
-    /* ── CENTERED RIGHT CONTENT ── */
+    /* ── RIGHT CONTENT ── */
     .content-area {
-      margin-left: 265px;
       flex: 1;
-      display: flex;
-      justify-content: center;
       padding: 0 2rem;
-      min-height: 100vh;
     }
 
     .main {
@@ -200,9 +203,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      body { flex-direction: column; }
-      .sidebar { position: relative; width: 100%; height: auto; }
-      .content-area { margin-left: 0; padding: 0 1rem; }
+      .page-wrapper { flex-direction: column; }
+      .sidebar { position: relative; width: 100%; max-height: none; }
+      .content-area { padding: 0 1rem; }
       .theme-btn { top: 0.5rem; right: 0.5rem; }
     }
   </style>
@@ -211,7 +214,9 @@
 
   <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9788; Light</button>
 
-  <!-- FIXED SIDEBAR -->
+  <div class="page-wrapper">
+
+  <!-- STICKY SIDEBAR -->
   <div class="sidebar">
     <h1>Henrik Sauer</h1>
 
@@ -247,7 +252,7 @@
     </div>
   </div>
 
-  <!-- SCROLLABLE MAIN -->
+  <!-- MAIN -->
   <div class="content-area">
     <div class="main">
 
@@ -329,6 +334,8 @@
 
     </div>
   </div>
+
+  </div><!-- end page-wrapper -->
 
   <script>
     function toggleTheme() {
