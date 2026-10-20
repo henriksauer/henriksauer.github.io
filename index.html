@@ -182,15 +182,19 @@
       margin-bottom: 0.75rem;
     }
 
+    .paper-section-heading {
+      color: var(--link);
+    }
+
     .job-market-line { color: var(--link); }
 
     /* ── PAPERS ── */
     .paper { margin-bottom: 1.5rem; }
     .paper > p { margin-bottom: 0.2rem; }
     .paper > p:first-child {
-      color: var(--link);
       font-weight: bold;
     }
+    .paper-bullet { color: var(--link); }
 
     .paper-button {
       display: inline-block;
@@ -309,11 +313,11 @@
 
       <hr>
 
-      <h2>Working Papers:</h2>
+      <h2 class="paper-section-heading">Working Papers:</h2>
 
       <div class="paper">
         <p>
-          &#9658;&nbsp;Public Markets for Litigation Finance (JMP)
+          <span class="paper-bullet">&#9658;</span>&nbsp;Public Markets for Litigation Finance (JMP)
           <a class="paper-button" href="HS_JMP.pdf" download>Paper</a>
           <a class="paper-button" href="HS_JMP_slides.pdf" target="_blank" rel="noopener">Slides</a>
         </p>
@@ -337,11 +341,11 @@
 
       <hr>
 
-      <h2>Work in Progress:</h2>
+      <h2 class="paper-section-heading">Work in Progress:</h2>
 
       <div class="paper">
         <p>
-          &#9658;&nbsp;Hedge Fund Trading around Shareholder Votes on Mergers:
+          <span class="paper-bullet">&#9658;</span>&nbsp;Hedge Fund Trading around Shareholder Votes on Mergers:
           A Common Ownership Perspective
         </p>
         <p class="abstract-text">
@@ -360,7 +364,7 @@
       </div>
 
       <div class="paper">
-        <p>&#9658;&nbsp;Loss-Portfolio-Transfers in Reinsurance Markets</p>
+        <p><span class="paper-bullet">&#9658;</span>&nbsp;Loss-Portfolio-Transfers in Reinsurance Markets</p>
       </div>
 
     </div>
