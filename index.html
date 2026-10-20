@@ -131,6 +131,20 @@
       margin-bottom: 0.1rem;
     }
 
+    .sidebar-link-button {
+      display: inline-block;
+      margin-bottom: 0.35rem;
+      padding: 0.15rem 0.55rem;
+      border: 1px solid var(--link);
+      border-radius: 3px;
+      background: var(--link);
+      color: var(--bg);
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: 1.35;
+    }
+    .sidebar-link-button:hover { text-decoration: none; opacity: 0.85; }
+
     /* ── RIGHT CONTENT ── */
     .content-area {
       flex: 1;
@@ -194,7 +208,7 @@
     .paper > p:first-child {
       font-weight: bold;
     }
-    .paper-bullet { color: var(--link); }
+    .paper-bullet { color: var(--heading); }
     .coauthor { font-weight: normal; font-style: italic; white-space: nowrap; }
 
     .paper-button {
@@ -272,9 +286,9 @@
 
     <div class="info-block">
       <span class="info-label">Links</span>
-      <a href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
-      <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
-      <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="sidebar-link-button" href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
+      <a class="sidebar-link-button" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
+      <a class="sidebar-link-button" href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 
@@ -293,7 +307,7 @@
         real world outcomes in competitive markets, legal systems, and insurance.
       </p>
       <p>
-        My advisors are Volker Nocke (Department of Economics) and
+        My advisors in Mannheim are Volker Nocke (Department of Economics) and
         Ernst Maug (Department of Finance).
       </p>
 
