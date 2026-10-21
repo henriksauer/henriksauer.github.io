@@ -21,7 +21,7 @@
       --bg:             #1a1a1a;
       --text:           #c8c8c8;
       --link:           #5bc8f5;
-      --label:          #e8e8e8;
+      --label:          #ffffff;
       --heading:        #ffffff;
       --fields:         #b0b0b0;
       --hr:             #333333;
@@ -61,7 +61,7 @@
       min-height: 100vh;
     }
 
-    a { color: var(--link); text-decoration: none; }
+    a { color: var(--heading); text-decoration: underline; }
     a:hover { text-decoration: underline; }
 
     /* ── THEME TOGGLE BUTTON ── */
@@ -99,7 +99,7 @@
     .sidebar h1 {
       font-size: 1.55rem;
       font-weight: bold;
-      color: var(--link);
+      color: var(--heading);
       margin-bottom: 1rem;
       line-height: 1.2;
     }
@@ -130,20 +130,6 @@
       display: block;
       margin-bottom: 0.1rem;
     }
-
-    .sidebar-link-button {
-      display: inline-block;
-      margin-bottom: 0.35rem;
-      padding: 0.15rem 0.55rem;
-      border: 1px solid var(--link);
-      border-radius: 3px;
-      background: var(--link);
-      color: var(--bg);
-      font-size: 0.8rem;
-      font-weight: bold;
-      line-height: 1.35;
-    }
-    .sidebar-link-button:hover { text-decoration: none; opacity: 0.85; }
 
     /* ── RIGHT CONTENT ── */
     .content-area {
@@ -197,7 +183,7 @@
     }
 
     .paper-section-heading {
-      color: var(--link);
+      color: var(--heading);
     }
 
     .job-market-line { color: var(--link); }
@@ -208,23 +194,11 @@
     .paper > p:first-child {
       font-weight: bold;
     }
+    .paper-title { color: var(--link); }
     .paper-bullet { color: var(--heading); }
     .coauthor { font-weight: normal; font-style: italic; white-space: nowrap; }
 
-    .paper-button {
-      display: inline-block;
-      margin-left: 0.55rem;
-      padding: 0.08rem 0.45rem;
-      border: 1px solid var(--link);
-      border-radius: 3px;
-      background: var(--link);
-      color: var(--bg);
-      font-size: 0.76rem;
-      font-weight: bold;
-      line-height: 1.35;
-      vertical-align: 0.08rem;
-    }
-    .paper-button:hover { text-decoration: none; opacity: 0.85; }
+    .paper-link { margin-left: 0.55rem; }
 
     .abstract-text {
       margin-top: 0.5rem;
@@ -286,9 +260,9 @@
 
     <div class="info-block">
       <span class="info-label">Links</span>
-      <a class="sidebar-link-button" href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
-      <a class="sidebar-link-button" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
-      <a class="sidebar-link-button" href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Resume%20Academic.pdf" target="_blank" rel="noopener">Curriculum Vitae</a><br>
+      <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6590078" target="_blank" rel="noopener">SSRN</a><br>
+      <a href="https://www.linkedin.com/in/henrik-sauer-96b341134" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 
@@ -332,9 +306,9 @@
 
       <div class="paper">
         <p>
-          <span class="paper-bullet">&#9658;</span>&nbsp;Public Markets for Litigation Finance (JMP) -- <span class="coauthor">with Julian Klix</span>
-          <a class="paper-button" href="HS_JMP.pdf" download>Paper</a>
-          <a class="paper-button" href="HS_JMP_SLIDES.pdf" target="_blank" rel="noopener">Slides</a>
+          <span class="paper-bullet">&#9658;</span>&nbsp;<span class="paper-title">Public Markets for Litigation Finance (JMP)</span> -- <span class="coauthor">with <a href="https://julianklix.github.io" target="_blank" rel="noopener">Julian Klix</a></span>
+          <a class="paper-link" href="HS_JMP.pdf" download>Paper</a>
+          <a class="paper-link" href="HS_JMP_SLIDES.pdf" target="_blank" rel="noopener">Slides</a>
         </p>
         <p class="presented">Presenting at AFA 2027 Poster Session, EEA Annual Congress 2026 and EALE Conference 2026 (selection)</p>
         <p class="abstract-text">
@@ -360,8 +334,8 @@
 
       <div class="paper">
         <p>
-          <span class="paper-bullet">&#9658;</span>&nbsp;Shareholder Reallocation around Merger Voting:
-          A Common Ownership Perspective
+          <span class="paper-bullet">&#9658;</span>&nbsp;<span class="paper-title">Shareholder Reallocation around Merger Voting:
+          A Common Ownership Perspective</span>
         </p>
         <p class="abstract-text">
           Recent theories on shareholder democracy predict that shareholders reallocate based on
@@ -378,7 +352,7 @@
       </div>
 
       <div class="paper">
-        <p><span class="paper-bullet">&#9658;</span>&nbsp;Loss-Portfolio-Transfers in Reinsurance Markets</p>
+        <p><span class="paper-bullet">&#9658;</span>&nbsp;<span class="paper-title">Loss-Portfolio-Transfers in Reinsurance Markets</span></p>
       </div>
 
     </div>
