@@ -56,7 +56,7 @@
 
     .page-wrapper {
       display: flex;
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto;
       min-height: 100vh;
     }
@@ -84,7 +84,7 @@
 
     /* ── STICKY LEFT SIDEBAR ── */
     .sidebar {
-      width: 265px;
+      width: 320px;
       flex-shrink: 0;
       position: sticky;
       top: 0;
@@ -105,10 +105,17 @@
     }
 
     .sidebar .photo {
-      width: 85%;
+      width: 100%;
+      max-width: 272px;
       margin: 0 0 1.5rem;
     }
-    .sidebar .photo img { width: 100%; display: block; }
+    .sidebar .photo img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: 48% center;
+      display: block;
+    }
     .sidebar .photo .placeholder {
       width: 100%; height: 200px;
       background: var(--placeholder-bg);
@@ -149,6 +156,7 @@
     /* ── RIGHT CONTENT ── */
     .content-area {
       flex: 1;
+      min-width: 0;
       padding: 0 2rem;
     }
 
@@ -264,7 +272,7 @@
     <h1>Henrik Sauer</h1>
 
     <div class="photo">
-      <img src="IMG_0349%202.jpeg" alt="Henrik Sauer"
+      <img src="henrik-sauer-portrait.jpg" alt="Henrik Sauer"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="placeholder">Photo</div>
     </div>
@@ -284,7 +292,7 @@
 
     <div class="info-block">
       <span class="info-label">E-mail</span>
-      henrik.sauer "at" uni-mannheim.de
+      <a class="sidebar-link-button" href="mailto:henrik.sauer@uni-mannheim.de">henrik.sauer@uni-mannheim.de</a>
     </div>
 
     <div class="info-block">
